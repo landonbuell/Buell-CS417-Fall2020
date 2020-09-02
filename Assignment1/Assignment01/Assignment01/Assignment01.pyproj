@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>b6335786-f195-4746-881c-050d1d829a35</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>q5-grades.py</StartupFile>
+    <StartupFile>test_asn01.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -26,6 +26,7 @@
     <Compile Include="q3-reduce.py" />
     <Compile Include="q4-diff.py" />
     <Compile Include="q5-grades.py" />
+    <Compile Include="test_asn01.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

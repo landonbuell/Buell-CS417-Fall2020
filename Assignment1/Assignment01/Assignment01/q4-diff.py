@@ -42,6 +42,8 @@ class Task04:
 
     def SameContents(self):
         """ Test of 2 files have the same Content """
+        if len(self.fileContents[0]) != len(self.fileContents[1]):   # different num of lines
+            return False
         for lineA,lineB in zip(self.fileContents[0],self.fileContents[1]):
             # Iterate through both files
             if lineA == lineB:      # lines are the same

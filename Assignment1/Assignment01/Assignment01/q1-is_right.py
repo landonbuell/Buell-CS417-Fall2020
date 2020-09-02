@@ -17,18 +17,13 @@ class Task01:
     def UserInput (self):
         """ Accept & Evaluate User Input for Assignment """
         inputSides = np.array([])           # array to hold side lengths
-        sideLabels = ["A: ","B: ","C: "]       # label for each side
-        for side in self.sideLabels:        # A,B,C
-            while True:                     # loop, incase   
-                try:
-                    userInput = float(input(sideLabels))  
-                    if userInput <= 0:  # must be > 0
-                        print("\n\tERROR! - Side length must be > 0")
-                    else:
-                        inputSides = np.append(inputSides,userInput)
-                        break
-                except:
-                    print("\n\tERROR! - Input must be type: Float")
+        sideLabels = ["A: ","B: ","C: "]    # label for each side
+        for side in sideLabels:             # A,B,C
+            try:
+                userInput = float(input(side))      # user input
+                inputSides = np.append(inputSides,userInput)
+            except:
+                raise ValueError("Must be Numeric data type")
         return inputSides
 
     def IsRightTriangle (self,sideLengths):
