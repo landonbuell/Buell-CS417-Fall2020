@@ -11,22 +11,17 @@ import numpy as np
 
         #### CLASS DEFINITIONS ####
 
-class Assignment1:
-    """ Accept and Process Command-Line User Input """
-
-    def __init__(self):
-        """ Initialize Class Instance """
-        self.sideLabels = ["A: ","B: ","C: "]       # label for each side
-        self.inputString = "Enter Length of side "  # string for user input
-        self.dx = 1e-10                             # tolerance factor for FP numbers
+class Task01:
+    """ Execution Object For Assignment01 - Question 1 """
 
     def UserInput (self):
         """ Accept & Evaluate User Input for Assignment """
         inputSides = np.array([])           # array to hold side lengths
+        sideLabels = ["A: ","B: ","C: "]       # label for each side
         for side in self.sideLabels:        # A,B,C
             while True:                     # loop, incase   
                 try:
-                    userInput = float(input(self.inputString+side))  
+                    userInput = float(input(sideLabels))  
                     if userInput <= 0:  # must be > 0
                         print("\n\tERROR! - Side length must be > 0")
                     else:
@@ -51,7 +46,7 @@ class Assignment1:
 
 if __name__ == '__main__':
 
-    Executable = Assignment1()              # create Executable obj
+    Executable = Task01()              # create Executable obj
     sideLengths = Executable.UserInput()    # Get side lengths from user
 
     for i in range (0,3,1):     # iterate over 3 sides
