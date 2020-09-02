@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>b6335786-f195-4746-881c-050d1d829a35</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>q1-is_right.py</StartupFile>
+    <StartupFile>q5-grades.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -22,6 +22,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="q1-is_right.py" />
+    <Compile Include="q2-pi_approx.py" />
+    <Compile Include="q3-reduce.py" />
+    <Compile Include="q4-diff.py" />
+    <Compile Include="q5-grades.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

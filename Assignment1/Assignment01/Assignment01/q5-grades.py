@@ -19,10 +19,18 @@ class Task05:
         """ Initialize Class Object Instance """
         self.filename = filename
 
+    def ReadFile (self):
+        """ Read File from local Directory """
+        self.Frame = pd.read_csv(self.filename,delimiter=',')
+        print(self.Frame.columns)
+        
+
 
         #### MAIN EXECUTABLE ####
 
 if __name__ == '__main__':
 
     # Get filename from Command Line
-    fileName = sys.argv[1]
+    fileName = sys.argv[1]              # get CL args
+    Executable = Task05(fileName)       # create executbale instance
+

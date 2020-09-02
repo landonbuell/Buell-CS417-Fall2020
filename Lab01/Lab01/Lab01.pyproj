@@ -2,15 +2,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>8ea1d08a-db73-408d-a0f4-76c4b52f6bf3</ProjectGuid>
+    <ProjectGuid>3be03e5a-6396-4135-abc7-b99a1697ec2e</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>q3-reduce.py</StartupFile>
+    <StartupFile>cond_loop.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
-    <Name>Task03</Name>
-    <RootNamespace>Task03</RootNamespace>
+    <Name>Lab01</Name>
+    <RootNamespace>Lab01</RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -21,7 +21,8 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="q3-reduce.py" />
+    <Compile Include="cond_loop.py" />
+    <Compile Include="Lab01.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
