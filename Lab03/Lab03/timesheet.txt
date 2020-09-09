@@ -1,0 +1,12 @@
+Bagley:Malinda R:twenty:12
+Wray:Indrajit H:45:15
+Stacks:Lake N:35:12
+Herberts:Seetha S:48.5:15.75
+Ingham:Ronny R:47:12.50
+Styles:Pauline G:22.5:12
+Morse:Nanna E:40:12.50
+Midgley:Thankful R:45:12.50
+Apted:Shevaun A:38:15
+Jewell:Keeleigh M:38:15
+Vilhjalmsson:Napier Z:20:15
+Kay:Hanna L:0:12

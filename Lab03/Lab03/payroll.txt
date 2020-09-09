@@ -1,0 +1,12 @@
+Bagley:Malinda R:0.0:0.0:0.0
+Wray:Indrajit H:712.5:142.5:570.0
+Stacks:Lake N:420.0:84.0:336.0
+Herberts:Seetha S:830.8125:166.16250000000002:664.65
+Ingham:Ronny R:631.25:126.25:505.0
+Styles:Pauline G:270.0:54.0:216.0
+Morse:Nanna E:500.0:100.0:400.0
+Midgley:Thankful R:593.75:118.75:475.0
+Apted:Shevaun A:570.0:114.0:456.0
+Jewell:Keeleigh M:570.0:114.0:456.0
+Vilhjalmsson:Napier Z:300.0:60.0:240.0
+Kay:Hanna L:0.0:0.0:0.0
