@@ -1,0 +1,19 @@
+x_title,Date
+left_title,Temperature
+right_title,Precipitation
+title,"Climate for Fairbanks from 1930 to 2019"
+x_tics,"1/1:Jan","2/1:Feb","3/1:Mar","4/1:Apr","5/1:May","6/1:Jun","7/1:Jul","8/1:Aug","9/1:Sep","10/1:Oct","11/1:Nov","12/1:Dec"
+x_range,"1/1,12/31"
+x_type,date
+left_tics,-20,0,20,32,40,60,80,100
+left_range,"-60,110"
+left_type,number
+right_tics,0.05,0.10,0.15,0.20
+right_range,"0,1"
+right_type,number
+data,"column:0","side:x"
+data,"column:1","side:right","color:green","style:bar"
+data,"column:2","side:left","color:darkblue","style:line"
+data,"column:3","side:left","color:orange","style:line"
+data,"column:4","side:left","color:blue","style:point","shape:downtriangle"
+data,"column:5","side:left","color:red","style:point","shape:uptriangle"

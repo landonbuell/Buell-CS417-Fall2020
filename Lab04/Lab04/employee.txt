@@ -1,0 +1,12 @@
+1:Bagley:Malinda R:12
+2:Wray:Indrajit H:15
+3:Stacks:Lake N:12
+4:Herberts:Seetha S:15.75
+5:Ingham:Ronny R:12.50
+6:Styles:Pauline G:12
+7:Morse:Nanna E:12.50
+8:Midgley:Thankful R:12.50
+9:Apted:Shevaun A:15
+10:Jewell:Keeleigh M:15
+11:Vilhjalmsson:Napier Z:15
+12:Kay:Hanna L:12
