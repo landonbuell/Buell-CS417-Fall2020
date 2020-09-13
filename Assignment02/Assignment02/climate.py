@@ -29,6 +29,11 @@ def get_climate(in_filename: str, out_filename: str) -> None:
     7. for each day of the year:
     8. Compute the climate for the day, write to output file.
     """
+    # Read each line of infile
+    while True:
+        for line in in_file.readlines(): 
+
+
 
 
 def usage():
