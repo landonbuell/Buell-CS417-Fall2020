@@ -7,6 +7,29 @@ CS417.01 - Assignment02
 
 import sys  # Needed for sys.argv
 from typing import List, Dict, Set
+import datetime
+
+def ProcessDateString (datestring,currentCentury):
+    """ Extract year, month day from string """
+    if "-" in datestring:       # slashes:
+        # format = YYYY-MM-DD
+        splitVals = datestring.split("-")   # split by "-"
+        # return datetime obj instance
+        return datetime.datetime(year=int(splitVals[0]),
+                                 month=int(splitVals[1]),
+                                 day=int(splitVals[2]))
+    elif "/" in datestring:
+        # format = DD/MM/YYY
+        splitVals = datestring.split("-")   # split by "-"
+        # return datetime obj instance
+        return datetime.datetime(year=int(splitVals[2]),
+                                 month=int(splitVals[1]),
+                                 day=int(splitVals[0]))
+    else:
+        print("\n\tEROR! - unimplemented format to handle")
+        return None
+
+
 
 def get_climate(in_filename: str, out_filename: str) -> None:
     """Read historical weather from in_filename, write climate to out_filename.
@@ -31,7 +54,25 @@ def get_climate(in_filename: str, out_filename: str) -> None:
     """
     # Read each line of infile
     while True:
-        for line in in_file.readlines(): 
+        line = in_file.readlines()
+        if len(line) == 0:      # last line
+            break               # leave loop
+        fields = line.split(",")    # split by comma
+        # if any feild is an empty string, skip it
+        if field in [x for x in feilds] == "":
+            continue
+
+        # isolate each feild w/ variable
+        date = fields[0]        
+        dateTimeObject = ProcessDateString(date)
+        precip = fields[1]
+        tempMax = fields[2]
+        tempMin = fields[3]
+                      
+        # 
+
+
+
 
 
 
