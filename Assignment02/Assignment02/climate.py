@@ -22,6 +22,11 @@ class ClimateData:
         self.outputHeader = ["Day","Avg precip","Avg low","Avg high",
                              "Min low","Max high","Min low year","Max high year"]
 
+        # Init Dictionaries
+        self.dictPrecips = {}
+        self.dictTempLow = {}
+        self.dictTempHigh = {}
+
     def ProcessInitialDate (self,datestring):
         """ Process a date string """
         if "-" in datestring:
@@ -42,6 +47,21 @@ class ClimateData:
             print("\n\tERROR-Invalid Format for 1st entry")
         return self
 
+    def ProcessCurrentDate (self,datestring,century,decade):
+        """ Process current datetime obj """
+        if "-" in datestring:
+            # format is YYYY-MM-DD
+            data = datestring.split("-")
+            day,month = int(data[-1]),int(data[-2])
+            if (day == 1) and (month == 1):
+                pass # left off here
+        elif "/" in datestring:
+            # format is DD/MM/YYYY
+            data = datestring.split("-")
+            day,month = data[0],data[1]
+        else:
+            print("\n\tERROR-Invalid Format for 1st entry")
+        
     def GetFormattedDate(self):
         """ return current 'MM/DD' as string """
         return str(self.month)+"/"+str(self.day)
@@ -74,6 +94,9 @@ def get_climate(in_filename: str, out_filename: str) -> None:
 
         if i == 1:          # 1st iter
             Climate.ProcessInitialDate(fields[0])
+        else:
+
+
 
         print("=)")
     return None
