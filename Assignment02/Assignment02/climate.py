@@ -9,27 +9,43 @@ import sys  # Needed for sys.argv
 from typing import List, Dict, Set
 import datetime
 
-def ProcessDateString (datestring,currentCentury):
-    """ Extract year, month day from string """
-    if "-" in datestring:       # slashes:
-        # format = YYYY-MM-DD
-        splitVals = datestring.split("-")   # split by "-"
-        # return datetime obj instance
-        return datetime.datetime(year=int(splitVals[0]),
-                                 month=int(splitVals[1]),
-                                 day=int(splitVals[2]))
-    elif "/" in datestring:
-        # format = DD/MM/YYY
-        splitVals = datestring.split("-")   # split by "-"
-        # return datetime obj instance
-        return datetime.datetime(year=int(splitVals[2]),
-                                 month=int(splitVals[1]),
-                                 day=int(splitVals[0]))
-    else:
-        print("\n\tEROR! - unimplemented format to handle")
-        return None
+class ClimateData:
 
+    def __init__(self,in_file,out_file):
+        """ Initialize Object Instance """
+        self.in_file = in_file
+        fileHandle = open(self.in_file,mode="r")
+        self.fileLines = fileHandle.readlines()
+        fileHandle.close()
+        self.n_lines = len(self.fileLines)
 
+        self.outputHeader = ["Day","Avg precip","Avg low","Avg high",
+                             "Min low","Max high","Min low year","Max high year"]
+
+    def ProcessInitialDate (self,datestring):
+        """ Process a date string """
+        if "-" in datestring:
+            # format is YYYY-MM-DD
+            data = datestring.split("-")
+            self.century = int(data[0][:2])
+            self.decade = int(data[0][2:])
+            self.month = int(data[1])
+            self.day = int(data[2])
+        elif "/" in datestring:
+            # format is DD/MM/YYYY
+            data = datesting.split("/")
+            self.century = int(data[2][:2])
+            self.decade = int(data[2][2:])
+            self.month = int(data[1])
+            self.day = int(data[0])
+        else:
+            print("\n\tERROR-Invalid Format for 1st entry")
+        return self
+
+    def GetFormattedDate(self):
+        """ return current 'MM/DD' as string """
+        return str(self.month)+"/"+str(self.day)
+            
 
 def get_climate(in_filename: str, out_filename: str) -> None:
     """Read historical weather from in_filename, write climate to out_filename.
@@ -39,8 +55,7 @@ def get_climate(in_filename: str, out_filename: str) -> None:
     in_filename :  name of the input file
     out_filename : name of the output file
     """
-    in_file = open(in_filename, 'r')
-
+    Climate = ClimateData(in_filename,out_filename)
     """
     What you should do:
     1. Read each line of in_file
@@ -52,30 +67,16 @@ def get_climate(in_filename: str, out_filename: str) -> None:
     7. for each day of the year:
     8. Compute the climate for the day, write to output file.
     """
-    # Read each line of infile
-    while True:
-        line = in_file.readlines()
-        if len(line) == 0:      # last line
-            break               # leave loop
-        fields = line.split(",")    # split by comma
-        # if any feild is an empty string, skip it
-        if field in [x for x in feilds] == "":
-            continue
+    # 1. Read each line of in_file       
+    for i in range(1,Climate.n_lines):     # each line, ignoring header
+        lineContent = Climate.fileLines[i].rstrip("\r\n")   # get the string
+        fields = lineContent.split(",")                     # split by comma
 
-        # isolate each feild w/ variable
-        date = fields[0]        
-        dateTimeObject = ProcessDateString(date)
-        precip = fields[1]
-        tempMax = fields[2]
-        tempMin = fields[3]
-                      
-        # 
+        if i == 1:          # 1st iter
+            Climate.ProcessInitialDate(fields[0])
 
-
-
-
-
-
+        print("=)")
+    return None
 
 def usage():
     """Complain that the user ran the program incorrectly."""
@@ -84,12 +85,19 @@ def usage():
     sys.exit()
 
 def main():
+    """
     if len(sys.argv) != 3:
         usage()
         sys.exit()
-
+    
     in_filename: str = sys.argv[1]
     out_filename: str = sys.argv[2]
+    """
+
+    # Hard-code arguments for debugging purposes
+    in_filename = "03824-weather-history.csv"
+    in_filename = "03824-weather-1895-to-1897.csv"
+    out_filename = "03824-climate.csv"
 
     get_climate(in_filename, out_filename)
 
