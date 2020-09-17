@@ -6,6 +6,7 @@ CS417.01 - Assignment02
 """
 
 import sys  # Needed for sys.argv
+import numpy as np
 from typing import List, Dict, Set
 import datetime
 
@@ -14,59 +15,134 @@ class ClimateData:
     def __init__(self,in_file,out_file):
         """ Initialize Object Instance """
         self.in_file = in_file
+        self.out_file = out_file
         fileHandle = open(self.in_file,mode="r")
         self.fileLines = fileHandle.readlines()
         fileHandle.close()
         self.n_lines = len(self.fileLines)
+        self.cleanDATEs = []
 
         self.outputHeader = ["Day","Avg precip","Avg low","Avg high",
                              "Min low","Max high","Min low year","Max high year"]
 
-        # Init Dictionaries
-        self.dictPrecips = {}
-        self.dictTempLow = {}
-        self.dictTempHigh = {}
-
-    def ProcessInitialDate (self,datestring):
-        """ Process a date string """
-        if "-" in datestring:
-            # format is YYYY-MM-DD
-            data = datestring.split("-")
-            self.century = int(data[0][:2])
-            self.decade = int(data[0][2:])
-            self.month = int(data[1])
-            self.day = int(data[2])
-        elif "/" in datestring:
-            # format is DD/MM/YYYY
-            data = datesting.split("/")
-            self.century = int(data[2][:2])
-            self.decade = int(data[2][2:])
-            self.month = int(data[1])
-            self.day = int(data[0])
-        else:
-            print("\n\tERROR-Invalid Format for 1st entry")
+    def OrganizeFileLines(self):
+        """ Organize All file data, store in self """
+        self.DATEs,self.PRCPs,self.TMINs,self.TMAXs = [],[],[],[]
+        for i in range(1,self.n_lines):                     # each line, ignoring header
+            lineContent = self.fileLines[i].rstrip("\r\n")  # get the string
+            fields = lineContent.split(",")                 # split by comma
+            if (fields[2] == "") or (fields[3] == ""):  # empty TMIN or TMAX
+                continue                                # skip day
+            else:                                       # otherwise
+                self.TMINs.append(int(fields[2]))       # add to list
+                self.TMAXs.append(int(fields[3]))       # add to list
+            if (fields[1] == ""):                       # no precip rec.
+                self.PRCPs.append(0.0)                  # add 0 units
+            else:                                       # otherwise
+                self.PRCPs.append(float(fields[1]))     # add measured val
+            self.DATEs.append(fields[0])                # add date
+        
+    def ProcessDates (self):                             
+        """ Organize and Correct all Dates in the dates list """
+        for i,date in enumerate(self.DATEs):            # each date obj
+            if i == 0:                                  # initial date to process
+                if "-" in date:            
+                    # Format: YYYY-MM-DD
+                    fields = date.split("-")    # Split at dash
+                    year,month,day = int(fields[0]),int(fields[1]),int(fields[2])
+                elif "/" in date:
+                    # Format DD/MM/YYYY
+                    fields = date.split("/")    # Split at slash
+                    year,month,day = int(fields[2]),int(fields[1]),int(fields[0])
+                else:
+                    print("\n\tERROR - Unhandled format!")
+                    raise ValueError()
+            else:           
+                if "-" in date:            
+                    # Format: YYYY-MM-DD
+                    fields = date.split("-")    # Split at dash
+                    month,day = int(fields[1]),int(fields[2])
+                elif "/" in date:
+                    # Format MM/DD/YYYY
+                    fields = date.split("/")    # Split at slash
+                    month,day = int(fields[0]),int(fields[1])
+                else:
+                    print("\n\tERROR - Unhandled format!")
+                    raise ValueError()
+                if (month == 1) & (day == 1):       # new years?
+                    year += 1                       # increment years
+            self.cleanDATEs.append(str(year)+"-"+str(month)+"-"+str(day))
         return self
 
-    def ProcessCurrentDate (self,datestring,century,decade):
-        """ Process current datetime obj """
-        if "-" in datestring:
-            # format is YYYY-MM-DD
-            data = datestring.split("-")
-            day,month = int(data[-1]),int(data[-2])
-            if (day == 1) and (month == 1):
-                pass # left off here
-        elif "/" in datestring:
-            # format is DD/MM/YYYY
-            data = datestring.split("-")
-            day,month = data[0],data[1]
-        else:
-            print("\n\tERROR-Invalid Format for 1st entry")
-        
-    def GetFormattedDate(self):
-        """ return current 'MM/DD' as string """
-        return str(self.month)+"/"+str(self.day)
-            
+    def RemoveLeapYears (self):
+        """ Index through list and remove leap years """
+        idx_to_remove = []
+        for i,date in enumerate(self.cleanDATEs):
+            if self.GetFormattedDate(date) == "29-2":
+                idx_to_remove.append(i)
+        del(self.cleanDATEs[idx_to_remove])
+        raise NotImplementedError()
+        return self
 
+    def CreateDictionaries(self):
+        """ Add Data by date to dictionaries """
+        self.dictPrcp,self.dictTmin,self.dictTmax = {},{},{}
+        # Iterate through all data
+        for date,prcp,Tmin,Tmax in zip(self.cleanDATEs,self.PRCPs,self.TMINs,self.TMAXs):
+            key = self.GetFormattedDate(date)       # get date string
+            # Not in the dictionary, make empty list for it
+            if key not in self.dictPrcp:           
+                self.dictPrcp.update({key:[]})  
+                self.dictTmin.update({key:[]})  
+                self.dictTmax.update({key:[]})  
+            # Always add val to list
+            self.dictPrcp[key].append(prcp) 
+            self.dictTmin[key].append(Tmin) 
+            self.dictTmax[key].append(Tmax) 
+
+        # Lastly, remove leap day
+        leapDay = "2-29"
+        self.dictPrcp.pop(leapDay)
+        self.dictTmin.pop(leapDay)
+        self.dictTmax.pop(leapDay)
+
+        return self
+
+    def GetFormattedDate(self,datestring):
+        """ return current 'DD/MM' as string """
+        fields = datestring.split("-")              # split by dahses
+        return str(fields[1])+"-"+str(fields[2])    # feilds new str  
+
+    def ComputeDataForDay(self,dayStr):
+        """ Compute Statisitcs for a Single Given Day by key 'DD/MM' """
+        avg_precip = sum(self.dictPrcp[dayStr])/len(self.dictPrcp[dayStr])
+        avg_high = sum(self.dictTmin[dayStr])/len(self.dictTmin[dayStr])
+        avg_low = sum(self.dictTmax[dayStr])/len(self.dictTmax[dayStr])
+        min_low = min(self.dictTmin[dayStr])
+        max_high = max(self.dictTmax[dayStr])
+
+        # need to implement
+        low_year = None
+        high_year = None
+        # 
+
+        return [dayStr,avg_precip,avg_low,avg_high,
+                min_low,max_high,low_year,high_year]
+
+    def WriteOutputFile(self):
+        """ Write Specified Output file to local disk """
+        outputFile = open(self.out_file,mode="w")
+        outputFile.writelines(str(x)+"," for x in self.outputHeader)
+        outputFile.writelines("\n")
+
+        for day in self.dictPrcp.keys():        # iter by day
+            statsList = self.ComputeDataForDay(day)
+            outputFile.writelines(str(x)+"," for x in statsList)
+            outputFile.writelines("\n")
+
+        outputFile.close()
+        return self    
+            
 def get_climate(in_filename: str, out_filename: str) -> None:
     """Read historical weather from in_filename, write climate to out_filename.
 
@@ -87,18 +163,12 @@ def get_climate(in_filename: str, out_filename: str) -> None:
     7. for each day of the year:
     8. Compute the climate for the day, write to output file.
     """
-    # 1. Read each line of in_file       
-    for i in range(1,Climate.n_lines):     # each line, ignoring header
-        lineContent = Climate.fileLines[i].rstrip("\r\n")   # get the string
-        fields = lineContent.split(",")                     # split by comma
+    Climate.OrganizeFileLines() 
+    Climate.ProcessDates()
+    Climate.CreateDictionaries()
+    
+    Climate.WriteOutputFile()
 
-        if i == 1:          # 1st iter
-            Climate.ProcessInitialDate(fields[0])
-        else:
-
-
-
-        print("=)")
     return None
 
 def usage():
@@ -119,7 +189,7 @@ def main():
 
     # Hard-code arguments for debugging purposes
     in_filename = "03824-weather-history.csv"
-    in_filename = "03824-weather-1895-to-1897.csv"
+    #in_filename = "03824-weather-1895-to-1897.csv"
     out_filename = "03824-climate.csv"
 
     get_climate(in_filename, out_filename)
