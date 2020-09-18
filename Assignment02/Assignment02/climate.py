@@ -10,6 +10,34 @@ import numpy as np
 from typing import List, Dict, Set
 import datetime
 
+class Math:
+
+    @staticmethod
+    def ArgMax(array):
+        """ Return index "i" of maximum value in array """
+        max = -np.inf       # max value
+        index = 0           # index of 
+        for i in range(len(array)):
+            if array[i] > max:      # greater than current max?
+                max = array[i]      # set new max
+                index = i           # store that index
+            else:
+                pass                # do nothing
+        return index
+
+    @staticmethod
+    def ArgMin (array):
+        """ Return index "i" of minimum value in array """
+        min = +np.inf           # max value
+        index = 0               # index of 
+        for i in range(len(array)):
+            if array[i] < min:      # smaller than current max?
+                min = array[i]      # set new min
+                index = i           # store that index
+            else:
+                pass                # do nothing
+        return index
+
 class ClimateData:
 
     def __init__(self,in_file,out_file):
@@ -44,6 +72,7 @@ class ClimateData:
         
     def ProcessDates (self):                             
         """ Organize and Correct all Dates in the dates list """
+        self.years = []
         for i,date in enumerate(self.DATEs):            # each date obj
             if i == 0:                                  # initial date to process
                 if "-" in date:            
@@ -71,17 +100,8 @@ class ClimateData:
                     raise ValueError()
                 if (month == 1) & (day == 1):       # new years?
                     year += 1                       # increment years
-            self.cleanDATEs.append(str(year)+"-"+str(month)+"-"+str(day))
-        return self
-
-    def RemoveLeapYears (self):
-        """ Index through list and remove leap years """
-        idx_to_remove = []
-        for i,date in enumerate(self.cleanDATEs):
-            if self.GetFormattedDate(date) == "29-2":
-                idx_to_remove.append(i)
-        del(self.cleanDATEs[idx_to_remove])
-        raise NotImplementedError()
+                    self.years.append(year)
+            self.cleanDATEs.append(str(year)+"-"+str(month)+"-"+str(day))           
         return self
 
     def CreateDictionaries(self):
@@ -122,10 +142,18 @@ class ClimateData:
         max_high = max(self.dictTmax[dayStr])
 
         # need to implement
-        low_year = None
-        high_year = None
-        # 
+        low_idx = Math.ArgMin(self.dictTmin[dayStr])
+        high_idx = Math.ArgMax(self.dictTmax[dayStr])
+        try:
+            low_year = self.years[low_idx]
+        except:
+            low_year = None
+        try:
+            high_year = self.years[high_idx]
+        except:
+            high_year = None
 
+        # Return the row of data
         return [dayStr,avg_precip,avg_low,avg_high,
                 min_low,max_high,low_year,high_year]
 
