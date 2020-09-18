@@ -206,19 +206,17 @@ def usage():
     sys.exit()
 
 def main():
-    """
+
     if len(sys.argv) != 3:
         usage()
         sys.exit()
     
     in_filename: str = sys.argv[1]
     out_filename: str = sys.argv[2]
-    """
 
     # Hard-code arguments for debugging purposes
-    in_filename = "03824-weather-history.csv"
-    #in_filename = "03824-weather-1895-to-1897.csv"
-    out_filename = "03824-climate.csv"
+    #in_filename = "03824-weather-history.csv"
+    #out_filename = "03824-climate.csv"
 
     get_climate(in_filename, out_filename)
 
