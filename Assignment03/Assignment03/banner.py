@@ -33,11 +33,15 @@ def get_blocks(filename: str) -> Dict[str, List[str]]:
     a dictionary: keys are single letters, values are 5x7 blocks.
     """
     matrices: Dict[str, List[str]] = dict()
-    fileHandle = open(filename,mode="r")        # open file
-    fileData = fileHandle.readlines()           # get all lines
-    for i in range(0,len(fileData),7):      # iterate by line
-        line = fileData[i].strip("\n\r")    # remove excess
-        print(line)
+    fileHandle = open(filename,mode="r")    # open file
+    fileData = fileHandle.readlines()       # get all lines
+    for i in range(0,len(fileData),8):      # iterate by line
+        textKey = fileData[i].strip("\n\r")     # remove excess
+        textVal = []                            # matrix to hold char data
+        for j in range (i+1,i+8,1):             # the next 7 lines are the data
+            textVal.append(fileData[j].strip("\n\r"))
+        newDict = {textKey,textVal}
+        matrices.update()
 
 
     return matrices
