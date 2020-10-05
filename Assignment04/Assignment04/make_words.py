@@ -1,4 +1,13 @@
+"""
+Landon Buell
+Alejo Hausner
+CS 417.01 - Assignment 04
+4 October 2020
+"""
+
 import sys
+import random
+import string
 from typing import List, Dict
 
 def read_frequencies(filename: str) -> Dict[str, float]:
@@ -63,16 +72,44 @@ def make_words(frequencies: Dict[str, float], n_words: int) -> None:
     -------
     prints n_words English-like words.
     '''
-    pass
+    
+    # Computing Cumulative Frequencies
+    cumulativeFrequencies = [frequencies["a"]]  # 0-th freq
+    dictVals = list(frequencies.values())       # get all values in order
+    for i in range(1,len(dictVals)):            # iter through values:
+        # previous value + i-th value
+        newFreq = cumulativeFrequencies[i-1] + dictVals[i]
+        cumulativeFrequencies.append(newFreq)
+
+    # Make the Words:
+    randomWords = []            # hold the wrods that we generate
+    possibleChoices = string.ascii_lowercase    # vals to generate are "a,b,c,..x,y,z"
+    for i in range(n_words):            # each word:
+        word = ""                       # empty word
+        randomChars = random.choices(possibleChoices,cum_weights=cumulativeFrequencies,k=5)
+        for char in randomChars:        # each char
+            word += char                # add to word
+        randomWords.append(word)        # add word to list
+
+    # Print the words that we've generated
+    for word in randomWords:        # each word
+        print(word)                 # print the word
+
 
 def main():
 
     if len(sys.argv) != 3:
         print ('usage: python',sys.argv[0],'freqs.txt n_words')
         sys.exit(1)
+    fileName = sys.argv[1]
+    nWords = sys.argv[2]
 
-    frequencies: Dict[str, float] = read_frequencies(sys.argv[1])
-    n_words: int = int(sys.argv[2])
+    # hard-code variables for development
+    #fileName = "freqs.txt"
+    #nWords = 10
+
+    frequencies: Dict[str, float] = read_frequencies(fileName)
+    n_words: int = int(nWords)
 
     make_words(frequencies, n_words)
 

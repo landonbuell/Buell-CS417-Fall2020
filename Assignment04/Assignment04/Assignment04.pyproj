@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>f71b131f-c954-41e0-827c-b6ec68c9e059</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>letter_frequencies.py</StartupFile>
+    <StartupFile>make_words.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
