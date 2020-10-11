@@ -23,6 +23,8 @@ def read_words(filename: str) -> List[str] :
     '''
     file = open(filename, 'r')
     words = []
+    for line in file.readlines():
+        words.append(line.rstrip("\n\r"))
     return words
 
 def linsearch_time(probe_words: List[str], valid_subset: List[str])\
@@ -43,6 +45,9 @@ def linsearch_time(probe_words: List[str], valid_subset: List[str])\
     -------
     a tuple with the time, and the # found
     """
+    for word in probe_words:        # each probe word
+        if word in valid_subset:    # in the subset
+
 
     return (0.0, 0)
 
