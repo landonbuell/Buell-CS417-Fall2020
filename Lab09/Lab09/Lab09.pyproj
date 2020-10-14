@@ -2,15 +2,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>f71b131f-c954-41e0-827c-b6ec68c9e059</ProjectGuid>
+    <ProjectGuid>cb8fe6bb-b042-4a14-8e9f-ed3947029a2f</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>search_times.py</StartupFile>
+    <StartupFile>img_viewer_oo.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
-    <Name>Assignment04</Name>
-    <RootNamespace>Assignment04</RootNamespace>
+    <Name>Lab09</Name>
+    <RootNamespace>Lab09</RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -21,9 +21,9 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="letter_frequencies.py" />
-    <Compile Include="make_words.py" />
-    <Compile Include="search_times.py" />
+    <Compile Include="img_viewer.py" />
+    <Compile Include="img_viewer_oo.py" />
+    <Compile Include="viewport.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
