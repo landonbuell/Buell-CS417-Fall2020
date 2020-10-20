@@ -15,8 +15,13 @@ def julia_converges(x: float, y: float,
     4. Exit the loop when z gets too big (magnitude > 2: no convergence), or
        the loop has run max_steps times (converges).
     '''
-    # Replace the following line
-    return True
+    z = Complex(x,y)
+    c = Complex(cx,cy)
+    for i in range(100):        # 100 iters
+        z = z.times(z).plus(c)  # iterate
+        if z.magnitude() > 2:   # more than 2
+            return False        # not in Julia Set
+    return True                 # after 100 iters, is still < 2
 
 def show_set(left: float, top: float,
              width: float, height: float,
@@ -85,27 +90,34 @@ def main():
         code = reply.lower()[0]
 
         if code == 'r':
+            # Pan right
             x_min += width / 4
 
         elif code == 'l':
-            # Replace this line
-            dummy = 0
+            # Pan left
+            x_min -= width / 4
 
         elif code == 'u':
-            # Replace this line
-            dummy = 0
+            # Pan Up
+            y_max += height / 4
 
         elif code == 'd':
-            # Replace this line
-            dummy = 0
+            # Pan Down
+            y_max -= height / 4
 
         elif code == 'i':
-            # Replace this line
-            dummy = 0
+            # Zoom in
+            x_min += width / 4
+            y_max -= height / 4
+            width /= 2
+            height /= 2
 
         elif code == 'o':
-            # Replace this line
-            dummy = 0
+            # Zoom out
+            x_min -= width / 4
+            y_max += height / 4
+            width *= 2
+            height *= 2
 
         elif code == 'q':
             break

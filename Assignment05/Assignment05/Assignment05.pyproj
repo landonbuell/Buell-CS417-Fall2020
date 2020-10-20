@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>84954618-a966-4e68-8810-d17e17f9ea63</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>complex.py</StartupFile>
+    <StartupFile>julia.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
