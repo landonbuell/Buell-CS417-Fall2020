@@ -1,0 +1,42 @@
+Empty set: {}
+
+Testing "add()":
+
+Testing "__str__":
+  A= {3, 1, 4, 5, 9, 2, 6}
+  B= {8, 9, 7, 3, 2, 4, 6}
+
+Testing "__repr__":
+  repr(A)= a_set(3, 1, 4, 5, 9, 2, 6)
+  repr(B)= a_set(8, 9, 7, 3, 2, 4, 6)
+
+Testing "remove":
+  After deletions:
+  A= {1, 4, 5, 2, 6}
+  B= {9, 3, 2, 4, 6}
+  Exception raised when deleting absent key
+
+Testing "contains":
+    0 in A? no   1 in A? yes  2 in A? yes  3 in A? no   4 in A? yes
+    5 in A? yes  6 in A? yes  7 in A? no   8 in A? no   9 in A? no 
+    0 in B? no   1 in B? no   2 in B? yes  3 in B? yes  4 in B? yes
+    5 in B? no   6 in B? yes  7 in B? no   8 in B? no   9 in B? yes
+  
+Testing "union":
+  A union B= {1, 4, 5, 2, 6, 9, 3}
+
+Testing "intersection":
+  A intersect B= {4, 2, 6}
+
+Testing "difference":
+  A minus B= {1, 5}
+  B minus A= {9, 3}
+
+Testing "issubset":
+  A subset of B? False
+  B subset of A? False
+  A subset of A? True
+
+Testing "__len__":
+  len(A)= 5
+  len(B)= 5
