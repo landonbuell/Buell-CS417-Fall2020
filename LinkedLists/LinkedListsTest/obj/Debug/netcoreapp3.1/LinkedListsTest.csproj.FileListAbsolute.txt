@@ -1,0 +1,13 @@
+C:\Users\Landon\Documents\GitHub\Buell-CS417-Fall2020\LinkedLists\LinkedListsTest\obj\Debug\netcoreapp3.1\LinkedListsTest.csprojAssemblyReference.cache
+C:\Users\Landon\Documents\GitHub\Buell-CS417-Fall2020\LinkedLists\LinkedListsTest\obj\Debug\netcoreapp3.1\LinkedListsTest.AssemblyInfoInputs.cache
+C:\Users\Landon\Documents\GitHub\Buell-CS417-Fall2020\LinkedLists\LinkedListsTest\obj\Debug\netcoreapp3.1\LinkedListsTest.AssemblyInfo.cs
+C:\Users\Landon\Documents\GitHub\Buell-CS417-Fall2020\LinkedLists\LinkedListsTest\obj\Debug\netcoreapp3.1\LinkedListsTest.csproj.CoreCompileInputs.cache
+C:\Users\Landon\Documents\GitHub\Buell-CS417-Fall2020\LinkedLists\LinkedListsTest\bin\Debug\netcoreapp3.1\LinkedListsTest.exe
+C:\Users\Landon\Documents\GitHub\Buell-CS417-Fall2020\LinkedLists\LinkedListsTest\bin\Debug\netcoreapp3.1\LinkedListsTest.deps.json
+C:\Users\Landon\Documents\GitHub\Buell-CS417-Fall2020\LinkedLists\LinkedListsTest\bin\Debug\netcoreapp3.1\LinkedListsTest.runtimeconfig.json
+C:\Users\Landon\Documents\GitHub\Buell-CS417-Fall2020\LinkedLists\LinkedListsTest\bin\Debug\netcoreapp3.1\LinkedListsTest.runtimeconfig.dev.json
+C:\Users\Landon\Documents\GitHub\Buell-CS417-Fall2020\LinkedLists\LinkedListsTest\bin\Debug\netcoreapp3.1\LinkedListsTest.dll
+C:\Users\Landon\Documents\GitHub\Buell-CS417-Fall2020\LinkedLists\LinkedListsTest\bin\Debug\netcoreapp3.1\LinkedListsTest.pdb
+C:\Users\Landon\Documents\GitHub\Buell-CS417-Fall2020\LinkedLists\LinkedListsTest\obj\Debug\netcoreapp3.1\LinkedListsTest.dll
+C:\Users\Landon\Documents\GitHub\Buell-CS417-Fall2020\LinkedLists\LinkedListsTest\obj\Debug\netcoreapp3.1\LinkedListsTest.pdb
+C:\Users\Landon\Documents\GitHub\Buell-CS417-Fall2020\LinkedLists\LinkedListsTest\obj\Debug\netcoreapp3.1\LinkedListsTest.genruntimeconfig.cache
