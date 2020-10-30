@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "orBWB84/MtyYupsKocum8sOncS7o1s3iNd9FGi9JLWIcBJ6xLrJ0qViy2IEK4pWoeegUA+9rRri/lt0Ay/WnpA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Landon\\Documents\\GitHub\\Buell-CS417-Fall2020\\PasswordFun\\ZipFileTest\\ZipFileTest.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Landon\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.2\\microsoft.aspnetcore.app.ref.3.1.2.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,13 @@
+C:\Users\Landon\Documents\GitHub\Buell-CS417-Fall2020\PasswordFun\ZipFileTest\bin\Debug\netcoreapp3.1\ZipFileTest.exe
+C:\Users\Landon\Documents\GitHub\Buell-CS417-Fall2020\PasswordFun\ZipFileTest\bin\Debug\netcoreapp3.1\ZipFileTest.deps.json
+C:\Users\Landon\Documents\GitHub\Buell-CS417-Fall2020\PasswordFun\ZipFileTest\bin\Debug\netcoreapp3.1\ZipFileTest.runtimeconfig.json
+C:\Users\Landon\Documents\GitHub\Buell-CS417-Fall2020\PasswordFun\ZipFileTest\bin\Debug\netcoreapp3.1\ZipFileTest.runtimeconfig.dev.json
+C:\Users\Landon\Documents\GitHub\Buell-CS417-Fall2020\PasswordFun\ZipFileTest\bin\Debug\netcoreapp3.1\ZipFileTest.dll
+C:\Users\Landon\Documents\GitHub\Buell-CS417-Fall2020\PasswordFun\ZipFileTest\bin\Debug\netcoreapp3.1\ZipFileTest.pdb
+C:\Users\Landon\Documents\GitHub\Buell-CS417-Fall2020\PasswordFun\ZipFileTest\obj\Debug\netcoreapp3.1\ZipFileTest.csprojAssemblyReference.cache
+C:\Users\Landon\Documents\GitHub\Buell-CS417-Fall2020\PasswordFun\ZipFileTest\obj\Debug\netcoreapp3.1\ZipFileTest.AssemblyInfoInputs.cache
+C:\Users\Landon\Documents\GitHub\Buell-CS417-Fall2020\PasswordFun\ZipFileTest\obj\Debug\netcoreapp3.1\ZipFileTest.AssemblyInfo.cs
+C:\Users\Landon\Documents\GitHub\Buell-CS417-Fall2020\PasswordFun\ZipFileTest\obj\Debug\netcoreapp3.1\ZipFileTest.csproj.CoreCompileInputs.cache
+C:\Users\Landon\Documents\GitHub\Buell-CS417-Fall2020\PasswordFun\ZipFileTest\obj\Debug\netcoreapp3.1\ZipFileTest.dll
+C:\Users\Landon\Documents\GitHub\Buell-CS417-Fall2020\PasswordFun\ZipFileTest\obj\Debug\netcoreapp3.1\ZipFileTest.pdb
+C:\Users\Landon\Documents\GitHub\Buell-CS417-Fall2020\PasswordFun\ZipFileTest\obj\Debug\netcoreapp3.1\ZipFileTest.genruntimeconfig.cache
