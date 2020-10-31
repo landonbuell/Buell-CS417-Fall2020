@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>eab63f01-f5a3-434c-9600-ef54963fafe8</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>expand_zip.py</StartupFile>
+    <StartupFile>sentinel_list.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -22,6 +22,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="expand_zip.py" />
+    <Compile Include="list_node.py" />
+    <Compile Include="plain_linked_list.py" />
+    <Compile Include="sentinel_list.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
