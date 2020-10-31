@@ -1,10 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "fswaQrALQc24UBM1smSskAFMrB3h7HLfWIrRbbnu689nDuRPs/WvaXP00MSYSJfXRe1cz7rOc0WFQy0gNDLt0w==",
+  "dgSpecHash": "mX2w2oRCUwL2li5FEmUcZIYkgFSgM+mhWG0HeKjP4fdCHnnK5yWQ7ourUYucKYVacSMwwHklpVS8wSrSQ4rVKA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Landon\\Documents\\GitHub\\Buell-CS417-Fall2020\\LinkedLists\\LinkedListsTest\\LinkedListsTest.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\Landon\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.2\\microsoft.aspnetcore.app.ref.3.1.2.nupkg.sha512"
-  ],
+  "expectedPackageFiles": [],
   "logs": []
 }
