@@ -6,12 +6,14 @@ namespace LinkedListsTest
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Double Linked List:");
+            DoubleLinkedList Linked = new DoubleLinkedList("Listy");
 
-            ListNode HeadNode = new ListNode("3", null, null);
-            DoubleLinkedList Linked = new DoubleLinkedList();
+            Linked.PrintList();
 
-            Linked.AddTail(new ListNode("3"));
+            Linked.AddHead(new ListNode("3"));
+
+            Linked.PrintList();
 
             Console.WriteLine("=)");
         }
