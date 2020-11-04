@@ -7,15 +7,18 @@ CS 417.01 - Lab12
 
 import math
 
-def real_root(a,b,c):
+def root(a,b,c):
+    if a == 0:
+        return (0,2)
     disc = b*b - 4*a*c
-
     if disc < 0:
         return (0, 1)
     return ((-b - math.sqrt(disc))/(2*a), 0)
 
 def solve_quadratic(entry):
     fields = entry.split()
+    if len(fields) != 3:
+        return (0,3)
     a, b, c = [float(s) for s in fields]
     (root, result) = real_root(a,b,c)
     if result == 0:

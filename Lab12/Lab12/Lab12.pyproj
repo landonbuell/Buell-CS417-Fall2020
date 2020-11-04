@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>3cd7d772-7019-4ced-8aac-161f1384832a</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Lab12.py</StartupFile>
+    <StartupFile>roots4.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -21,7 +21,10 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Lab12.py" />
+    <Compile Include="roots1.py" />
+    <Compile Include="roots2.py" />
+    <Compile Include="roots3.py" />
+    <Compile Include="roots4.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

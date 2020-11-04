@@ -10,8 +10,6 @@ import cmath
 
 def real_root(a,b,c):
     disc = b*b - 4*a*c
-
-
     if a == 0:
         raise ValueError("Cannot have a = 0")
     if disc < 0:

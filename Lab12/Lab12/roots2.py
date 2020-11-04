@@ -8,14 +8,17 @@ CS 417.01 - Lab12
 import math
 
 def real_root(a,b,c):
-    disc = b*b - 4*a*c
-
+    if a == 0:
+        return (0,False)
+    disc = b*b - 4*a*c   
     if disc < 0:
         return (0, False)
     return ((-b - math.sqrt(disc))/(2*a), True)
 
 def solve_quadratic(entry):
     fields = entry.split()
+    if len(fields) != 3:
+        return (0,False)
     a, b, c = [float(s) for s in fields]
     (root, success) = real_root(a,b,c)
     if success:
