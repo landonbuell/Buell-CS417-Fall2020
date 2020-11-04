@@ -1,10 +1,3 @@
-"""
-Landon Buell
-Alejo Hausner
-CS 417.01 - Asn07`
-28 October 2020
-"""
-
 import sys
 
 class List_Node:
@@ -46,6 +39,12 @@ class Linked_List:
         if orig != None:
             for x in orig:
                 self.add_tail(x)
+
+    def copy(self):
+        '''
+        Return a copy of this list.
+        '''
+        return Linked_List(self)
 
     def add_front(self, value):
         '''
@@ -291,9 +290,11 @@ def main():
     words[1] = 'dot'
 
     print ('words:', words)
+    print ('copy of words:', words.copy())
 
     combined = ints + words
-    print (combined)
+    print ('ints + words:', combined)
+
 
 if __name__ == '__main__':
     main()

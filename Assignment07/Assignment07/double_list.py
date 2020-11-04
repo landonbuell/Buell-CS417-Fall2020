@@ -2,7 +2,7 @@
 Landon Buell
 Alejo Hausner
 CS 417.01 - Asn07
-28 October 2020
+3 Nov 2020
 """
 
 import sys
@@ -13,10 +13,11 @@ class List_Node:
     '''
     def __init__(self,
                  value=None,
-                 next=None):
+                 next=None,
+                 prev=None):
         self._value = value
         self._next  = next
-        self._prev = None   
+        self._prev = prev
 
     def __str__(self):
         return '(' + str(self._value) + ')'
@@ -38,35 +39,45 @@ class Double_List:
         '''
         Constructor for the linked list.
         It takes an optional argument, which may be a regular
-        python list, another Linked_List, or any container.
+        python list, another Double_List, or any container.
         If the argument is present, appends all its values to self.
         '''
-        # Start with an empty list
-        self._head = None
+        # Start with an empty list 
+        self._head = List_Node()
+        self._tail = List_Node()
+        self._head._next = self._tail
+        self._tail._prev = self._head
+
         # walk down orig, and append every element to THIS list.
         if orig != None:
             for x in orig:
                 self.add_tail(x)
 
+    def copy(self):
+        '''
+        Return a copy of this list.
+        '''
+        return Double_List(self._head)
+
     def add_front(self, value):
         '''
         Add value to front of list
         '''
-        self._head = List_Node(value, self._head)
+        # create new nod ew/ links
+        _new = List_Node(value,self._head._next,self._head) 
+        # 
+        self._head._next._prev = _new          
+        self._head._next = _new
+        return self._head
 
     def add_tail(self, value):
         '''
         Add value to end of list
         '''
-        if self._head == None:
-            # special case for empty list
-            self.add_front(value)
-        else:
-            # general case: walk down, until we reach tail node.
-            current = self._head
-            while current._next != None:
-                current = current._next
-            current._next = List_Node(value)
+        _new = List_Node(value,self._tail,self._tail._prev)
+        self._tail._prev._next = _new
+        self._tail._prev = _new
+        return self._head
 
     def insert(self, value, index):
         '''
@@ -82,17 +93,30 @@ class Double_List:
             self.add_tail(value)
         else:
             # general case. Walk down the list, the correct number of steps.
-            prev = self._head
+            _new = List_node(value)
+            _curr = self._head
             for i in range(index - 1):
-                prev = prev._next
-            new_node = List_Node(value, prev._next)
-            prev._next = new_node
+                _curr = _curr._next     
+            _curr._next._prev = _new
+            _new._next = _curr._next
+            _curr._next = _new
+            _new._prev = _curr
+        return self._head
 
+    def is_empty(self):
+        '''
+        Return True/False if list is or isn't empty
+        '''
+        if len(self) == 0:  # no nodes
+            return True     # empty
+        else:               # nodes
+            return False    # not empty
+                           
     def __add__(self, other_list):
         '''
         Join two lists together: self + other_list
         '''
-        result = Linked_List()
+        result = Double_List()
         for x in self:
             result.add_tail(x)
         for x in other_list:
@@ -110,10 +134,11 @@ class Double_List:
             raise IndexError
         else:
            # index is good. Walk down the list, the correct number of times.
-            current = self._head
+            current = self._head._next
             for i in range(index):
                 current = current._next
             current._value = value
+        return self._head
 
     def __getitem__(self, index):
         '''
@@ -126,7 +151,7 @@ class Double_List:
             raise IndexError
         else:
            # index is good. Walk down the list, the correct number of times.
-            current = self._head
+            current = self._head._head
             for i in range(index):
                 current = current._next
             return current._value
@@ -136,9 +161,9 @@ class Double_List:
         Size of list
         '''
         # just walk down the list, counting nodes.
-        current = self._head
+        current = self._head._next
         count = 0
-        while current != None:
+        while current != self._tail:
             count += 1
             current = current._next
         return count
@@ -154,28 +179,19 @@ class Double_List:
             raise IndexError
         else:
             # index is OK.
-            if index == 0:
-                # special case: delete head node
-                victim = self._head
-                self._head = self._head._next
-                del victim
-            else:
-                # general case: walk until you get to victim's predecessor.
-                prev = self._head
-                for x in range(index - 1):
-                    prev = prev._next
-                # remember the victim (we're returning it)
-                victim = prev._next
-                # now, set predecessor's next to BYPASS the victim.
-                prev._next = victim._next
-                del victim._value
+            _curr = self._head._next
+            for i in range (index):
+                _curr = _curr._next
+            _curr._prev._next = _curr._next # overwrite next
+            _curr._next._prev = _curr._prev # overwrite prev
+            return self._head
 
     def __iter__(self):
         '''
         Generator for values in list
         '''
-        current = self._head
-        while current != None:
+        current = self._head._next
+        while current != self._tail:
             yield current._value
             current = current._next
 
@@ -183,7 +199,10 @@ class Double_List:
         '''
         Reverse iterator for values in list
         '''
-        raise NotImplementedError
+        _curr = self._tail._prev    # last node before tail
+        while _curr != self._head:  # while not at head
+            _curr = _curr._prev     # work our way backwards
+        
 
     def __contains__(self, value):
         '''
@@ -201,12 +220,10 @@ class Double_List:
         User-friendly stringification of list
         '''
         result = '['
-        current = self._head
-        while current != None:
+        current = self._head._next
+        while current != self._tail:
             result += str(current._value)
             current = current._next
-            if current != None:
-                result += ', '
         result += ']'
         return result
 
@@ -216,9 +233,9 @@ class Double_List:
         Useful for debugging.
         '''
         prev_nodes = set()
-        result = 'Linked_List(\n'
+        result = 'Double_List(\n'
         current = self._head
-        while current != None:
+        while current != self._tail:
             prev_nodes.add(current)
             result += '  ' + repr(current)
             if current == self._head:
@@ -229,7 +246,9 @@ class Double_List:
                 break
             else:
                 current = current._next
-        result += ')'
+        result += '  ' + repr(self._tail)
+        result += ' == tail'
+        result += ' )'
         return result
 
     '''
@@ -292,9 +311,11 @@ def main():
     words[1] = 'dot'
 
     print ('words:', words)
+    print ('copy of words:', words.copy())
 
     combined = ints + words
-    print (combined)
+    print ('ints + words:', combined)
+
 
 if __name__ == '__main__':
     main()
