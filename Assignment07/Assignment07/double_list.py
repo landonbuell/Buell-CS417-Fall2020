@@ -49,9 +49,18 @@ class Double_List:
         self._tail._prev = self._head
 
         # walk down orig, and append every element to THIS list.
-        if orig != None:
-            for x in orig:
-                self.add_tail(x)
+        if (orig != None): 
+            if (type(orig) == list):         # list type
+                for x in orig:
+                    self.add_tail(x)
+            elif (type(orig) == List_Node):  # list Node 
+                self.add_tail(orig._value)
+            elif (type(orig) == Double_List):# Double List
+                raise NotImplementedError()
+            else:
+                raise NotImplementedError()
+
+
 
     def copy(self):
         '''
@@ -63,20 +72,20 @@ class Double_List:
         '''
         Add value to front of list
         '''
-        # create new nod ew/ links
-        _new = List_Node(value,self._head._next,self._head) 
-        # 
-        self._head._next._prev = _new          
-        self._head._next = _new
+        # create new node w/ links
+        new = List_Node(value,self._head._next,self._head) 
+        # Conenct to head/tail
+        self._head._next._prev = new          
+        self._head._next = new
         return self._head
 
     def add_tail(self, value):
         '''
         Add value to end of list
         '''
-        _new = List_Node(value,self._tail,self._tail._prev)
-        self._tail._prev._next = _new
-        self._tail._prev = _new
+        new = List_Node(value,self._tail,self._tail._prev)
+        self._tail._prev._next = new
+        self._tail._prev = new
         return self._head
 
     def insert(self, value, index):
@@ -93,14 +102,14 @@ class Double_List:
             self.add_tail(value)
         else:
             # general case. Walk down the list, the correct number of steps.
-            _new = List_node(value)
-            _curr = self._head
+            new = List_Node(value)
+            curr = self._head
             for i in range(index - 1):
-                _curr = _curr._next     
-            _curr._next._prev = _new
-            _new._next = _curr._next
-            _curr._next = _new
-            _new._prev = _curr
+                curr = curr._next     
+            curr._next._prev = new
+            new._next = curr._next
+            curr._next = new
+            new._prev = curr
         return self._head
 
     def is_empty(self):
@@ -161,11 +170,11 @@ class Double_List:
         Size of list
         '''
         # just walk down the list, counting nodes.
-        current = self._head._next
+        curr = self._head._next
         count = 0
-        while current != self._tail:
+        while curr != self._tail:
             count += 1
-            current = current._next
+            curr = curr._next
         return count
 
     def __delitem__(self, index):
@@ -179,41 +188,42 @@ class Double_List:
             raise IndexError
         else:
             # index is OK.
-            _curr = self._head._next
+            curr = self._head._next
             for i in range (index):
-                _curr = _curr._next
-            _curr._prev._next = _curr._next # overwrite next
-            _curr._next._prev = _curr._prev # overwrite prev
+                curr = curr._next
+            curr._prev._next = curr._next # overwrite next
+            curr._next._prev = curr._prev # overwrite prev
             return self._head
 
     def __iter__(self):
         '''
         Generator for values in list
         '''
-        current = self._head._next
-        while current != self._tail:
-            yield current._value
-            current = current._next
+        curr = self._head._next
+        while curr != self._tail:
+            yield curr._value
+            curr = curr._next
 
     def __reversed__(self):
         '''
         Reverse iterator for values in list
         '''
-        _curr = self._tail._prev    # last node before tail
-        while _curr != self._head:  # while not at head
-            _curr = _curr._prev     # work our way backwards
+        curr = self._tail._prev     # last node before tail
+        while curr != self._head:   # while not at head
+            yield curr._value
+            curr = curr._prev       # work our way backwards
         
 
     def __contains__(self, value):
         '''
         Containment test: True iff value is in list
         '''
-        current = self._head
-        while current != None:
-            if current._value == value:
-                return True
+        current = self._head._next      # start after head
+        while current != self._tail:
+            if current._value == value: # is value?
+                return True             # break, return true
             current = current._next
-        return False
+        return False                    # got here? not in list
 
     def __str__(self):
         '''
