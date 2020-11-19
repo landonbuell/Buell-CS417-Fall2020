@@ -5,7 +5,6 @@ and identify the type of each token.
 '''
 
 from typing import List, Tuple
-import string
 
 def tokenize(expression: str, specials: str, whitespace: str) -> List[str]:
     '''
@@ -58,14 +57,13 @@ def tokenize(expression: str, specials: str, whitespace: str) -> List[str]:
         elif state == OPERAND:
             if c in whitespace:
                 # save the operand
-                tokens.append(operand)
+                pass
             elif c in specials:
                 # save the operand, save the special
-                tokens.append(operand)      # store op. in tokens
-                tokens.append(c)            # store c in tokens
+                pass
             else:
                 # extend the operand
-                operand += c
+                pass
 
         elif state == WHITESPACE:
             if c in whitespace:
@@ -73,14 +71,12 @@ def tokenize(expression: str, specials: str, whitespace: str) -> List[str]:
                 pass
             elif c in specials:
                 # save the special
-                tokens.append(c)
+                pass
             else:
                 # start an operand
-                operand = c
+                pass
 
     # Task 2: Check if we need to save the last operand
-    if state == OPERAND:
-        tokens.append(operand)
 
     return tokens
 
@@ -97,35 +93,15 @@ def lexer(tokens: List[str]) -> List[Tuple[str,str]]:
     '''
     lexemes = []
     operators = "+-*/=()"
-
-    ascii_letters = string.ascii_letters
-    digits = string.digits
-
-    validChars = ascii_letters + "_" + digits
-    
     for token in tokens:
         lex_type = 'unknown'
         lex_value = token
 
         # Task 3 and 4: What type is the token?
-        if token in operators:      # operator?
-            lex_type = 'operator'
-            continue                # next iter of loop
 
-        # Not in ops?
-        try:                    # attempt
-            x = float(token)    # make float
-            lex_type = 'number' # is a number
-        except ValueError:      # didn't work!
-            pass
 
-        if (token[0] in "_") or (token[0] in ascii_letters):
-            for i in range(1,len(token)):   # other chars
-                if token[i] not in validChars:  # not _ , str, or digit:
-                    break
-            continue
-            lex_type = 'variable'
-            
+
+
         # Leave this line here, at the end of the for-loop
         lexemes.append( (lex_value, lex_type) )
     return lexemes
