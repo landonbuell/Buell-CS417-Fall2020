@@ -8,12 +8,12 @@ class Stack:
 
     def pop(self):
         if self.empty():
-            raise IndexError('Empty stack')
+            raise IndexError('Cant pop from Empty stack')
         return self._data.pop()
 
     def top(self):
         if self.empty():
-            raise IndexError('Empty stack')
+            raise IndexError('Top of Empty stack is null')
         return self._data[-1]
 
     def empty(self):
@@ -51,4 +51,5 @@ def main():
         print ('pop on empty stack throws no exception!')
 
 if __name__ == '__main__':
-    main()
+    #main()
+    pass

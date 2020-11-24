@@ -2,15 +2,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>c086b87e-e2cc-4491-846d-35430ed459d1</ProjectGuid>
+    <ProjectGuid>9e5e8bb8-cf6e-4e2a-acf8-79e66bc2b736</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>calculator.py</StartupFile>
+    <StartupFile>Assignment09.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
-    <Name>Assignment08</Name>
-    <RootNamespace>Assignment08</RootNamespace>
+    <Name>Assignment09</Name>
+    <RootNamespace>Assignment09</RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -21,8 +21,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="calculator.py" />
-    <Compile Include="stack.py" />
+    <Compile Include="Assignment09.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
