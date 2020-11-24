@@ -1,0 +1,46 @@
+>> 1 +
+Missing operand
+>> + 1
+Missing operand
+>> 20 & 3
+Bad token: "&"
+>> (20 + 3*(
+Missing operand
+>> 20 (2+ 3)
+Too many operands
+>> 10 + 20/ 30
+         30.0
+     /
+         20.0
+ +
+     10.0
+10.666666666666666
+>> alpha
+ alpha
+variable "alpha" is not defined
+>> 23alpha
+Bad token: "23alpha"
+>> celsius =32
+     32.0
+ =
+     celsius
+32.0
+>> fahrenheit = celsius * 9/5 + 32
+         32.0
+     +
+             5.0
+         /
+                 9.0
+             *
+                 celsius
+ =
+     fahrenheit
+89.6
+>> fahrenheit / (celsius- celsius)
+         celsius
+     -
+         celsius
+ /
+     fahrenheit
+Division by zero
+>>
