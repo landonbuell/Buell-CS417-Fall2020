@@ -1,0 +1,18 @@
+"abracadabra" is palindromic? False
+"abba" is palindromic?        True
+"madam" is palindromic?       True
+"X" is palindromic?           True
+empty string is palindromic?  True
+# odd numbers in [1,2,3,4,5]: 3
+# odd numbers in [2,4,6,8]:   0
+# odd numbers in []:          0
+max([1,2,3,4]):               4
+max([4,3,2,1]):               4
+max([4]):                     4
+4 last in [1,2,3,4] at index  3
+4 last in [4,2,3,4] at index  3
+4 last in [1,2,3] at index    -1
+4 last in [] at index         -1
+[1,2,3,4] is sorted?          True
+[4,3,2,1] is sorted?          False
+[1,2,3,2] is sorted?          False
