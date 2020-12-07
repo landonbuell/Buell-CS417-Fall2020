@@ -24,6 +24,7 @@
   <ItemGroup>
     <Compile Include="calculator2.py" />
     <Compile Include="expression_node.py" />
+    <Compile Include="parser417.py" />
     <Compile Include="stack.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
