@@ -9,11 +9,25 @@ def to_tree(postfix_expression: List[Tuple[Any,str]]) -> Expression_Node:
     Convert an postfix (a list of lexemes)
     into a parse tree.
     '''
-
-    # Your code goes here
-
-    # Replace the following line:
-    return Expression_Node()
+    postfixStack = Stack()              # stack to hold expressions
+    for token in postfix_expression:    # each token
+        if token[1] == "variable":
+            # Create & push variable node
+            node = Variable_Node(value=token[0])
+            postfixStack.push(node)
+        elif token[1] == "number":
+            # Create & push value node
+            node = Number_Node(value=token[0])
+            postfixStack.push(node)
+        elif token[1] == "operator":
+            # Create & push operator node
+            right = postfixStack.pop()
+            left = postfixStack.pop()
+            node = Operator_Node(value=token[0],left=left,right=right)
+            postfixStack.push(node)
+        else:
+            raise NotImplementedError("Unknown Token Type")
+    return postfixStack.pop()               # return node
 
 def eval_tree(node: Expression_Node, symbol_table: Dict[str,float]) -> float:
     '''
@@ -22,8 +36,7 @@ def eval_tree(node: Expression_Node, symbol_table: Dict[str,float]) -> float:
     that's where all the work gets done,
     if you have a properly-built hierarchy of classes.
     '''
-
-    return None
+    return node.get_value(symbol_table)
 
 def print_tree(node: Expression_Node) -> None:
     '''
@@ -35,7 +48,6 @@ def print_tree(node: Expression_Node) -> None:
     write a "helper" function (with two parameters, not one)
     that does actual the inorder traversal.
     '''
-
     print( 'print_tree not implemented' )
 
 def main():
@@ -47,9 +59,13 @@ def main():
             print()
             break
 
-        if line[0] == '#':
-            # Comment line.  Print it, and ignore it.
-            print(line)
+        try:
+            if line[0] == '#':
+                # Comment line.  Print it, and ignore it.
+                print(line)
+                continue
+        except IndexError:
+            print()
             continue
 
         try:
@@ -62,6 +78,16 @@ def main():
             if value is not None:
                 print( value )
         except SyntaxError as e:
+            print( e )
+        except KeyError as e:
+            print ( e )
+        except IndexError as e:
+            print ( e )
+        except ValueError as e:
+            print( e )
+        except NotImplementedError as e:
+            print( e )
+        except Exception as e:
             print( e )
         # Here, add more 'except' clauses, to catch every possible
         # error that is raised by various parts of your code.
