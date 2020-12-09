@@ -48,7 +48,14 @@ def print_tree(node: Expression_Node) -> None:
     write a "helper" function (with two parameters, not one)
     that does actual the inorder traversal.
     '''
-    print( 'print_tree not implemented' )
+    return indented_print(node,0)
+
+def indented_print(node,depth):
+    """ Print tree indented by depth"""
+    if node is not None:
+        indented_print(node._left,depth+1)
+        print("\t"*depth,node)
+        indented_print(node._right,depth+1)
 
 def main():
     symbol_table = dict()
